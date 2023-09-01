@@ -35,37 +35,52 @@ if(proyecto!==null && nombreMadera!==null && pieza!==null && proyecto!=="" && no
 
 })
 
+let cuerpoTabla = document.getElementById ("cuerpoTabla");
+
 function agregarFila() {
     let contenidoFila = '<td>' + calculo.proyecto + '</td>' + '<td>' + calculo.nombreMadera + '</td>' + '<td>' + calculo.pieza + '</td>'+ '<td>' + calculo.pies + '</td>';
     let crearFila = document.createElement("tr");
     crearFila.innerHTML = contenidoFila;
-    let cuerpoTabla = document.getElementById ("cuerpoTabla");
     cuerpoTabla.appendChild(crearFila);
 }
 
-function guardarCalculo() {
+function almacenarCalculo() {
     let calculosJSON = JSON.stringify(calculos);
     localStorage.setItem("dataCalculo", calculosJSON);
 }
 
-let calculosRecuperados = [];
-
-function recuperarDatos () {
-    calculosAlmacenados = JSON.parse(localStorage.getItem("dataCalculo"));
-    for (const calculo of calculosAlmacenados) {
-        calculosRecuperados.push(new Calculo (calculo))
-    }
-}
-
 let btnGuardar = document.getElementById("btnGuardar").addEventListener("click", ()=> {
-    guardarCalculo()
+    let filas = cuerpoTabla.childNodes;
+    if (filas.length>1) {
+    almacenarCalculo()
+    
+    // Sweet Alert
+
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 1200,
+        timerProgressBar: false,
+        didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    })
+
+    Toast.fire({
+        icon: 'success',
+        title: 'Resumen guardado'
+    })}
 });
+
+let calculosAlmacenados = JSON.parse(localStorage.getItem("dataCalculo")) || [];
 
 let btnBuscar = document.getElementById ("btnBuscar").addEventListener("click", ()=> {
     let maderaBuscada = document.getElementById("maderaBuscada").value.toUpperCase();
     let sumaPies = 0;
 
-    let maderaEncontrada = calculos.filter((i) => i.nombreMadera == maderaBuscada);
+    let maderaEncontrada = calculosAlmacenados.filter((i) => i.nombreMadera == maderaBuscada);
     maderaEncontrada.forEach((madera)=>{
         sumaPies += madera.pies;
         resultadoBusqueda(maderaBuscada,sumaPies)})})
@@ -79,3 +94,8 @@ function errorBusqueda (maderaBuscada) {
     let resultadoBusqueda = document.getElementById("resultadoBusqueda");
     resultadoBusqueda.innerHTML = `No se ha encontrado la madera ${maderaBuscada}`;
 }
+
+
+
+
+
