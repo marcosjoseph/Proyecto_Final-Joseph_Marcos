@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Descripcion Pagina -->
+    <title>Groot | Inicio  </title>
+    <link rel="shortcut icon" href="img/LogoGroot.png" type="image/x-icon">
+    <meta name="description" content="¡Bienvenidos a Groot! Trabajamos la madera a medida. En nuestro sitio podras conocernos, ver nuestros trabajos, productos en stock y enviarnos tu consulta para presupuestar!">
+    <meta name="keywords" content="groot, wood, madera, melamina, enchapado, taller, carpintero, carpinteria, medida, muebles, mesa, barra">
+
+    <!-- Link Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
+    <!-- Link Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;1,600&family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <div id="vistaGrid">
+
+        <header>
+
+            <h1 id="bienvenida">Bienvenidos a Groot! Trabajamos la madera</h1>
+
+            <nav class="navbar navbar-expand-lg">
+                <a  href="index.html"> <img id="logoGroot" src="img/LogoGroot.png" alt="Logo Groot"> </a>
+            </nav>
+
+        </header>
+
+        <main id="main">
+
+            <section id="calculadora">
+
+            <h2>¡Bienvenidos a la calculadora de Pies de Madera!</h2>
+
+            <p class="intro">¡Llená el formulario con el detalle de lo que necesitas calcular!</p>
+
+            <form id="formulario">
+
+                <ul id="informacion">
+                    <li>
+                        <label for="Proyecto">Proyecto</label>
+                        <input id="Proyecto" type="text" name="Proyecto" placeholder="Nombre del Proyecto" value="" required>
+                    </li>
+
+                    <li>
+                        <label for="Madera">Madera</label>
+                        <input id="Madera" type="text" name="Madera" placeholder="Nombre de Madera" required>
+                    </li>
+
+                    <li>
+                        <label for="Pieza">Pieza</label>
+                        <input id="Pieza" type="text" name="Pieza" placeholder="Nombre Pieza" required>
+                    </li>
+
+                    <li>
+                        <label for="Cantidad">Cantidad</label>
+                        <input id="Cantidad" type="number" name="Cantidad" placeholder="Cantidad" maxlength="5" required>
+                    </li>
+
+                    <li>
+                        <label for="Largo">Largo</label>
+                        <input id="Largo" type="number" name="Largo" placeholder="Largo en cm" maxlength="5" required>
+                    </li>
+
+                    <li>
+                        <label for="Ancho">Ancho</label>
+                        <input id="Ancho" type="number" name="Ancho" placeholder="Ancho en cm" maxlength="5" required>
+                    </li>
+
+                    <li>
+                        <label for="Grosor">Grosor</label>
+                        <input id="Grosor" type="number" name="Grosor" placeholder="Grosor en cm" maxlength="5" required>
+                    </li>
+
+                    <li>
+                        <label for="Pies">Total Pies</label>
+                        <input id="Pies" name="Pies" value="0" maxlength="5" required readonly>
+                    </li>
+                </ul>
+
+                <button id="btnCalcular" type="submit">Calcular</button>
+                    
+            </form>
+            </section>
+
+                <section id="resumen">
+                    <div id="tablaResumen">
+
+                        <h2>Resumen Calculado:</h2>
+
+                        <table class="table table-hover" id="tablaResumen">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Proyecto</th>
+                                    <th scope="col">Madera</th>
+                                    <th scope="col">Pieza</th>
+                                    <th scope="col">Pies</th>
+                                </tr>
+                            </thead>
+                            <tbody id="cuerpoTabla">
+                            </tbody>
+                        </table>
+
+                        <button id="btnGuardar">Guardar</button>
+                    </div>
+
+                    <div id="busquedaResumen">
+                        <h2>Buscar Madera:</h2>
+                        <input type="text" id="maderaBuscada" placeholder="Escribir nombre Madera">
+                        <p id="resultadoBusqueda"></p>
+                        <button id="btnBuscar">Buscar</button>
+                    </div>
+                    
+                </section>
+
+        </main>
+
+        <footer>
+
+            <div id="menu__footer">
+            <h4>Contactanos</h4>
+            <ul>
+                <li><a href="https://wa.me/541121580900?text=Hola!%20Queria%20hacerte%20una%20consulta!" target="_blank">1121580900</li>
+                <li><a href="mailto:info@groot.com.ar">info@groot.com.ar</a></li>
+                <li>Bella Vista, Buenos Aires, Argentina.</li>
+            </ul>
+            </div> 
+
+            <div id="redes">
+            <ul class="redes-sociales">  
+                <li><a id="arriba" href=""><img id="subir" src="img/flecha-arriba.png" alt="Subir"></a></li>
+                <li> <a href="https://wa.me/541121580900?text=Hola!%20Queria%20hacerte%20una%20consulta!" target="_blank"> <img id="whatsapp" src="img/whatsapp.png" alt="Escribinos por Whatsapp">
+                </a>
+                </li>  
+                <li><a href="https://www.instagram.com/groot.woodwork/" target="_blank"> <img id="instagram" src="img/instagram.png" alt="Mira nuestro instagram">
+                </a>
+                </li>
+            </ul>
+            </div> 
+
+        </footer>
+        
+        </div>
+
+    </div>
+
+
+    <!-- Script a Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+
+    <!-- Script a JS -->
+    <script src="main.js"></script>
+</body>
+</html>

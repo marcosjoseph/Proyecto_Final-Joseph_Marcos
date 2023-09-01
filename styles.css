@@ -1,0 +1,258 @@
+* {
+margin: 0px;
+padding: 0px;
+}
+
+body {
+font-family: "Poppins", sans-serif;
+}
+
+#vistaGrid {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+
+
+img {
+max-width: 100%;
+}
+
+a {
+cursor: pointer;
+text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+button {
+    height: 30px;
+    width: 200px;
+    border-radius: 5px;
+    border-width: 1px;
+    border: none;
+    background-color:#d5bdaf;
+    color: #f5ebe0;
+    font-weight: 600;
+    text-align: center;
+}
+
+button:hover {
+    background-color: #76695d;
+}
+
+/* Header */
+header {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+position: sticky;
+top: 0px;
+opacity: 0.9;
+background-color: #f5ebe0;
+width: 100%;
+z-index: 99;
+}
+header h1 {
+font-size: medium;
+background-color: #d5bdaf;
+color: #f5ebe0;
+width: 100%;
+text-align: center;
+}
+header #logoGroot {
+width: 100px;
+align-items: center;
+padding-top: 10px;
+}
+header #logoGroot:hover {
+transform: scale(1.25);
+}
+
+
+
+/* Footer & Redes */
+footer {
+background-color: #d5bdaf;
+width: 100%;
+margin-top: 40px;
+display: grid;
+grid-template-areas: "izq der";
+grid-template-rows: 150px;
+grid-template-columns: 80% auto;
+}
+footer #menu__footer {
+grid-area: izq;
+justify-self: start;
+align-self: center;
+}
+footer #menu__footer h4 {
+font-size: medium;
+font-weight: 600;
+color: #76695d;
+margin-left: 30px;
+}
+footer #menu__footer li {
+padding: 2.5px;
+font-size: small;
+font-weight: 400;
+color: #76695d;
+}
+footer #menu__footer li a {
+color: #76695d;
+}
+footer #menu__footer li a:hover {
+color: #f5ebe0;
+}
+footer #redes {
+grid-area: der;
+justify-self: end;
+align-self: center;
+}
+footer #redes .redes-sociales {
+padding: 5px;
+position: fixed;
+bottom: 2.5px;
+right: 10px;
+}
+
+#whatsapp, #instagram, #subir {
+width: 30px;
+margin: 5px;
+}
+#whatsapp:hover, #instagram:hover, #subir:hover {
+transform: scale(1.4);
+}
+
+@media screen and (min-width: 1440px) {
+#subir {
+display: none;
+}
+}
+
+#main__index h2 {
+font-size: large;
+font-weight: 600;
+padding: 10px;
+margin: 10px 0;
+color: #76695d;
+text-align: center;
+}
+
+
+/* Main */
+#main {
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+width: 100%;
+margin: 0 40px;
+padding: 20px;
+overflow: hidden;
+}
+@media screen and (min-width: 1440px) {
+#main {
+justify-content: start;
+align-items: start;
+}
+}
+#main h2 {
+font-size: large;
+font-weight: 600;
+padding: 10px;
+margin: 10px 0;
+color: #76695d;
+}
+
+#main p {
+margin-bottom: 30px;
+}
+
+/* Calculadora */
+
+#calculadora, #resumen {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Formulario */
+
+#informacion {
+    width: 400px;
+    padding-left: 10px;
+} 
+
+label{
+    width: 100px;
+    padding-right:20px;
+}
+
+input {
+    height: 30px;
+    padding: 10px;
+    border-radius: 5px;
+    border-width: 1px;
+    border-color:#76695d;
+}
+
+#informacion li {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: start;
+    padding: 5px;
+}
+
+/* Resumen */
+
+/* Tabla Resumen */
+
+thead {
+    background-color: #f5ebe0;
+}
+
+tr, th, td {
+    color: #76695d;
+    text-align: center;
+}
+
+/* Busqueda Resumen */
+
+#busquedaResumen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding:30px;
+}
+
+#resultadoBusqueda {
+    background-color: #f5ebe0;
+    color:#76695d;
+    width:400px;
+    height:35px;
+    padding: 5px;
+    border-radius: 5px;
+    border-width: 1px;
+    border-color:#76695d;
+    text-align: center;
+}
+
+#maderaBuscada {
+    margin-bottom: 20px;
+}
+
+
+
+
+
+
+
+
