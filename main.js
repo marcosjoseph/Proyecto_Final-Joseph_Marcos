@@ -120,8 +120,6 @@ let btnBorrar = document.getElementById("btnBorrar").addEventListener("click", (
 let btnBuscar = document.getElementById ("btnBuscar").addEventListener("click", ()=> {
     let maderaBuscada = document.getElementById("maderaBuscada").value.toUpperCase();
     let sumaPies = 0;
-    // let resultadoBusqueda = document.getElementById("resultadoBusqueda");
-
     let maderaEncontrada = calculos.filter((i) => i.nombreMadera == maderaBuscada);
 
     if (localStorage.getItem("dataCalculo") === null || maderaBuscada == null || maderaBuscada == "" ) { 
