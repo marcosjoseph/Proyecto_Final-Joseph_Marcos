@@ -9,7 +9,7 @@ const Calculo = function (proyecto, nombreMadera, pieza, cantidad, largo, ancho,
     this.pies = pies;
 }
 
-let calculos = [];
+let calculos = JSON.parse(localStorage.getItem("dataCalculo")) || [];
 
 let calculo;
 
@@ -31,8 +31,25 @@ if(proyecto!==null && nombreMadera!==null && pieza!==null && proyecto!=="" && no
     calculos.push(calculo);
     console.table (calculos);
     agregarFila()
-} else {alert("Por favor, completá todos los campos e ingresá valores válidos.")}
+} else {
+    
+// Sweet Alert Warning
+const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 4000,
+    timerProgressBar: false,
+    didOpen: (toast) => {
+    toast.addEventListener('mouseenter', Swal.stopTimer)
+    toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+})
 
+Toast.fire({
+    icon: 'warning',
+    title: 'Por favor, completá todos los campos e ingresá valores válidos.'
+})}
 })
 
 let cuerpoTabla = document.getElementById ("cuerpoTabla");
@@ -44,6 +61,8 @@ function agregarFila() {
     cuerpoTabla.appendChild(crearFila);
 }
 
+// Almacenar y Borrar Calculos
+
 function almacenarCalculo() {
     let calculosJSON = JSON.stringify(calculos);
     localStorage.setItem("dataCalculo", calculosJSON);
@@ -54,13 +73,13 @@ let btnGuardar = document.getElementById("btnGuardar").addEventListener("click",
     if (filas.length>1) {
     almacenarCalculo()
     
-    // Sweet Alert
+    // Sweet Alert Success
 
     const Toast = Swal.mixin({
         toast: true,
         position: 'top-end',
         showConfirmButton: false,
-        timer: 1200,
+        timer: 1500,
         timerProgressBar: false,
         didOpen: (toast) => {
         toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -74,17 +93,61 @@ let btnGuardar = document.getElementById("btnGuardar").addEventListener("click",
     })}
 });
 
-let calculosAlmacenados = JSON.parse(localStorage.getItem("dataCalculo")) || [];
+let btnBorrar = document.getElementById("btnBorrar").addEventListener("click", () => {
+
+    Swal.fire({
+        text: '¿Estás seguro de borrar todos los calculos guardados?',
+        showCancelButton: true,
+        confirmButtonColor: '#d5bdaf',
+        cancelButtonColor: '#d5bdaf',
+        confirmButtonText: 'Si!',
+        cancelButtonText:'No!',
+    }).then((result) => {
+        if (result.isConfirmed) {
+            localStorage.clear("dataCalculo");
+            resultadoBusqueda.textContent = "";
+            Swal.fire({
+            text:'Calculos Borrados!',
+            timer:1400,
+            showConfirmButton:false,
+        })
+        }
+    })
+})
+
+// Buscar Maderas
 
 let btnBuscar = document.getElementById ("btnBuscar").addEventListener("click", ()=> {
     let maderaBuscada = document.getElementById("maderaBuscada").value.toUpperCase();
     let sumaPies = 0;
+    // let resultadoBusqueda = document.getElementById("resultadoBusqueda");
 
-    let maderaEncontrada = calculosAlmacenados.filter((i) => i.nombreMadera == maderaBuscada);
-    maderaEncontrada.forEach((madera)=>{
-        sumaPies += madera.pies;
-        resultadoBusqueda(maderaBuscada,sumaPies)})})
+    let maderaEncontrada = calculos.filter((i) => i.nombreMadera == maderaBuscada);
+
+    if (localStorage.getItem("dataCalculo") === null || maderaBuscada == null || maderaBuscada == "" ) { 
+        const Toast3 = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 5000,
+            timerProgressBar: false,
+            didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+        
+        Toast3.fire({
+            icon: 'warning',
+            title: 'Por favor, guardá la información e/o ingresá el nombre de la madera buscada.'
+        })
+        }
     
+    else {maderaEncontrada.forEach((madera)=>{
+        sumaPies += madera.pies;
+        resultadoBusqueda(maderaBuscada,sumaPies)})}
+    })
+            
 function resultadoBusqueda(maderaBuscada,sumaPies) {
     let resultadoBusqueda = document.getElementById("resultadoBusqueda");
     resultadoBusqueda.innerHTML = `En total necesitás ${sumaPies} pies de ${maderaBuscada}.`;
@@ -95,7 +158,44 @@ function errorBusqueda (maderaBuscada) {
     resultadoBusqueda.innerHTML = `No se ha encontrado la madera ${maderaBuscada}`;
 }
 
+// Lista Desplegable Maderas
 
+const documento = document;
 
+documento.addEventListener("DOMContentLoad",listaDesplegable())
 
+function listaDesplegable () {
+    fetch("maderas.json")
+    .then((response) => response.json())
+    .then(info => {
+        const maderas = info.maderas;
 
+        const select = document.getElementById("Madera");
+
+        maderas.forEach(madera => {
+            const crearOption = document.createElement("option");
+            crearOption.value = madera.nombre;
+            crearOption.text = madera.nombre;
+            select.appendChild(crearOption);
+        });      
+    })
+    .catch(error => {
+        
+    // Sweet Alert Error
+
+    const Toast2 = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timerProgressBar: false,
+        didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    })
+
+    Toast2.fire({
+        icon: 'error',
+        title: 'Error en la carga de la lista de maderas.'
+    }) 
+    })}

@@ -33,7 +33,7 @@
             <h1 id="bienvenida">Bienvenidos a Groot! Trabajamos la madera</h1>
 
             <nav class="navbar navbar-expand-lg">
-                <a  href="index.html"> <img id="logoGroot" src="img/LogoGroot.png" alt="Logo Groot"> </a>
+                <a  href="https://www.instagram.com/groot.woodwork/" target="_blank"> <img id="logoGroot" src="img/LogoGroot.png" alt="Logo Groot"> </a>
             </nav>
 
         </header>
@@ -56,7 +56,8 @@
 
                     <li>
                         <label for="Madera">Madera</label>
-                        <input id="Madera" type="text" name="Madera" placeholder="Nombre de Madera" required>
+                        <select id="Madera" name="Madera" required>
+                        </select>
                     </li>
 
                     <li>
@@ -96,7 +97,7 @@
             </section>
 
                 <section id="resumen">
-                    <div id="tablaResumen">
+                    <div id="tabla">
 
                         <h2>Resumen Calculado:</h2>
 
@@ -113,11 +114,16 @@
                             </tbody>
                         </table>
 
-                        <button id="btnGuardar">Guardar</button>
+                        <div id="botonesResumen">
+                            <button id="btnGuardar">Guardar</button>
+                            <button id="btnBorrar">Borrar Guardados</button>
+                        </div>
+
+                        
                     </div>
 
                     <div id="busquedaResumen">
-                        <h2>Buscar Madera:</h2>
+                        <h2>Buscar Madera Guardadas:</h2>
                         <input type="text" id="maderaBuscada" placeholder="Escribir nombre Madera">
                         <p id="resultadoBusqueda"></p>
                         <button id="btnBuscar">Buscar</button>

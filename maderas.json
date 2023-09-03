@@ -1,0 +1,52 @@
+{
+    "maderas": [
+        { 
+        "nombre":"Elegí la madera",
+        "precio":"0"
+    },
+        { 
+        "nombre":"Guatambu",
+        "precio":"650"
+    },
+    { 
+        "nombre":"Guayubira",
+        "precio":"700"
+    },
+    { 
+        "nombre":"Incienso",
+        "precio":"1350"
+    },
+    { 
+        "nombre":"Kiri",
+        "precio":"600"
+    },
+    { 
+        "nombre":"Lapacho",
+        "precio":"1400"
+    },
+    { 
+        "nombre":"Laurel",
+        "precio":"620"
+    },
+    { 
+        "nombre":"Paraiso",
+        "precio":"400"
+    },
+    { 
+        "nombre":"Petiribi",
+        "precio":"800"
+    },
+    { 
+        "nombre":"Pino",
+        "precio":"420"
+    },
+    { 
+        "nombre":"Saligna",
+        "precio":"150"
+    }
+    ]
+    
+}
+
+
+
